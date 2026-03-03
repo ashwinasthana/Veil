@@ -67,31 +67,31 @@ export default function Navbar() {
 
       {/* Mobile nav */}
       {mobileOpen && (
-        <div className="md:hidden bg-white border-b border-neutral-100 px-4 sm:px-6 py-4 space-y-3">
+        <div className="md:hidden bg-white/80 backdrop-blur-xl border-b border-neutral-100/50 px-4 sm:px-6 py-4 space-y-3">
           <Link
             href="#features"
-            className="block font-interTight text-sm text-neutral-600 hover:text-neutral-900"
+            className="block font-interTight text-xs text-neutral-500 hover:text-neutral-900 transition-colors"
             onClick={() => setMobileOpen(false)}
           >
             Features
           </Link>
           <Link
             href="#pricing"
-            className="block font-interTight text-sm text-neutral-600 hover:text-neutral-900"
+            className="block font-interTight text-xs text-neutral-500 hover:text-neutral-900 transition-colors"
             onClick={() => setMobileOpen(false)}
           >
             Pricing
           </Link>
           <Link
             href="#faq"
-            className="block font-interTight text-sm text-neutral-600 hover:text-neutral-900"
+            className="block font-interTight text-xs text-neutral-500 hover:text-neutral-900 transition-colors"
             onClick={() => setMobileOpen(false)}
           >
             FAQ
           </Link>
           <Link
             href="/dashboard"
-            className="block w-full text-center py-2.5 rounded-full bg-gradient-to-r from-violet-600 to-blue-600 text-white font-interTight text-sm font-semibold"
+            className="block w-full text-center py-2.5 rounded-full bg-neutral-900 text-white font-interTight text-xs font-medium tracking-tight shadow-sm hover:shadow-md hover:bg-neutral-800 transition-all duration-300"
             onClick={() => setMobileOpen(false)}
           >
             Open App
