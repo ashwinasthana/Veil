@@ -64,7 +64,7 @@ const plans = [
 
 export default function PricingSection() {
   return (
-    <section id="pricing" className="py-24 px-6 bg-neutral-50/50">
+    <section id="pricing" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 bg-neutral-50/50">
       <div className="max-w-5xl mx-auto">
         {/* Section header */}
         <motion.div
@@ -72,7 +72,7 @@ export default function PricingSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-14"
+          className="text-center mb-8 sm:mb-10 md:mb-14"
         >
           <h2 className="font-satoshi text-2xl md:text-3xl font-semibold text-neutral-900 mb-2">
             Simple pricing
@@ -83,7 +83,7 @@ export default function PricingSection() {
         </motion.div>
 
         {/* Pricing cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-4 max-w-4xl mx-auto">
           {plans.map((plan, i) => (
             <motion.div
               key={plan.name}

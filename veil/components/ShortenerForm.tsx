@@ -134,7 +134,7 @@ export default function ShortenerForm() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="bg-white rounded-xl border border-neutral-200 shadow-lg p-6"
+        className="bg-white rounded-xl border border-neutral-200 shadow-lg p-4 sm:p-6"
       >
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* URL input */}

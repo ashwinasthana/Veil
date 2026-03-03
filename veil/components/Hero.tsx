@@ -31,12 +31,12 @@ const fadeUp = {
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-dots">
+    <section className="relative min-h-[90vh] md:min-h-[85vh] flex items-center justify-center overflow-hidden bg-dots pt-20 md:pt-0">
       {/* Subtle monochrome orbs */}
       <div className="absolute top-20 left-1/4 w-96 h-96 bg-neutral-100 rounded-full blur-3xl" />
       <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-neutral-50 rounded-full blur-3xl" />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
         {/* Floating privacy badges */}
         <div className="relative">
           {badges.map((badge) => (
@@ -70,7 +70,7 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
             custom={0.2}
-            className="font-satoshi text-4xl md:text-5xl font-semibold tracking-tight mb-4 text-neutral-900"
+            className="font-satoshi text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight mb-4 text-neutral-900"
             style={{ letterSpacing: "-0.02em", lineHeight: "1.1" }}
           >
             Shorten links. <span className="text-neutral-400">Stay invisible.</span>
@@ -117,11 +117,11 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
           custom={0.8}
-          className="mt-24 relative"
+          className="mt-12 sm:mt-16 md:mt-24 relative"
         >
-          <div className="bg-gray-950 rounded-2xl p-6 md:p-8 shadow-2xl border border-gray-800 max-w-3xl mx-auto">
+          <div className="bg-gray-950 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-2xl border border-gray-800 max-w-3xl mx-auto">
             {/* Window controls */}
-            <div className="flex items-center gap-2 mb-6">
+            <div className="flex items-center gap-2 mb-4 sm:mb-6">
               <div className="w-3 h-3 rounded-full bg-red-500/80" />
               <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
               <div className="w-3 h-3 rounded-full bg-green-500/80" />
@@ -131,16 +131,16 @@ export default function Hero() {
             {/* Mock shortener UI */}
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <div className="flex-1 bg-gray-800/50 rounded-xl px-5 py-3.5 text-gray-400 text-sm font-mono border border-gray-700/50">
+                <div className="flex-1 bg-gray-800/50 rounded-lg sm:rounded-xl px-3 sm:px-5 py-2.5 sm:py-3.5 text-gray-400 text-xs sm:text-sm font-mono border border-gray-700/50 truncate">
                   https://example.com/very-long-url-that-needs-shortening
                 </div>
-                <div className="px-6 py-3.5 rounded-xl bg-neutral-900 text-white text-sm font-medium shadow-lg">
+                <div className="px-4 sm:px-6 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl bg-neutral-900 text-white text-xs sm:text-sm font-medium shadow-lg whitespace-nowrap">
                   Shorten
                 </div>
               </div>
-              <div className="flex items-center gap-3 bg-gray-800/30 rounded-xl px-5 py-3.5 border border-gray-700/30">
+              <div className="flex items-center gap-2 sm:gap-3 bg-gray-800/30 rounded-lg sm:rounded-xl px-3 sm:px-5 py-2.5 sm:py-3.5 border border-gray-700/30">
                 <span className="text-emerald-400 text-sm font-mono">✓</span>
-                <span className="text-gray-300 text-sm font-mono">veils.dev/x7Kp2mQ</span>
+                <span className="text-gray-300 text-xs sm:text-sm font-mono">veils.dev/x7Kp2mQ</span>
                 <span className="ml-auto text-gray-500 text-xs">Copied!</span>
               </div>
             </div>

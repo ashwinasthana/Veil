@@ -40,7 +40,7 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-20 px-6">
+    <section id="faq" className="py-14 sm:py-16 md:py-20 px-4 sm:px-6">
       <div className="max-w-2xl mx-auto">
         {/* Section header */}
         <motion.div
@@ -48,7 +48,7 @@ export default function FAQSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-10 md:mb-12"
         >
           <h2 className="font-satoshi text-xl md:text-2xl font-semibold text-neutral-900 mb-2">
             FAQ

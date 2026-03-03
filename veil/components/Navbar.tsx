@@ -15,7 +15,7 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-neutral-100/50">
-      <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
         {/* Brand */}
         <Link href="/" className="flex items-center gap-2">
           <Image
@@ -67,7 +67,7 @@ export default function Navbar() {
 
       {/* Mobile nav */}
       {mobileOpen && (
-        <div className="md:hidden bg-white border-b border-neutral-100 px-6 py-4 space-y-3">
+        <div className="md:hidden bg-white border-b border-neutral-100 px-4 sm:px-6 py-4 space-y-3">
           <Link
             href="#features"
             className="block font-interTight text-sm text-neutral-600 hover:text-neutral-900"

@@ -80,7 +80,7 @@ const fadeUp = {
 
 export default function FeatureSection() {
   return (
-    <section id="features" className="py-24 px-6">
+    <section id="features" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6">
       <div className="max-w-5xl mx-auto">
         {/* Section header */}
         <motion.div
@@ -88,7 +88,7 @@ export default function FeatureSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-20"
+          className="text-center mb-12 sm:mb-16 md:mb-20"
         >
           <span className="inline-flex items-center px-3 py-1 rounded-full bg-neutral-100 text-neutral-600 border border-neutral-200 text-[10px] font-interTight font-medium tracking-tight mb-4">
             Features
@@ -102,7 +102,7 @@ export default function FeatureSection() {
         </motion.div>
 
         {/* 3-column highlights */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 mb-10 sm:mb-12 md:mb-16">
           {highlights.map((item, i) => (
             <motion.div
               key={item.title}
@@ -128,7 +128,7 @@ export default function FeatureSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-10"
+          className="text-center mb-6 sm:mb-8 md:mb-10"
         >
           <h3 className="font-satoshi text-xl md:text-2xl font-semibold tracking-tight text-neutral-900 mb-2">
             Everything you need
@@ -139,7 +139,7 @@ export default function FeatureSection() {
         </motion.div>
 
         {/* Feature grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           {features.map((feature, i) => (
             <motion.div
               key={feature.title}
