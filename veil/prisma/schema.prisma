@@ -1,0 +1,25 @@
+// ─── Prisma Schema for Veil URL Shortener ───
+// Defines the ShortenedUrl model with privacy-first fields
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model ShortenedUrl {
+  id           String    @id @default(cuid())
+  originalUrl  String
+  shortCode    String    @unique
+  expiresAt    DateTime? 
+  passwordHash String?
+  clickLimit   Int?      
+  clickCount   Int       @default(0)
+  createdAt    DateTime  @default(now())
+
+  @@index([shortCode])
+  @@index([createdAt])
+}
