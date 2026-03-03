@@ -19,6 +19,7 @@ import {
   IconExternalLink,
   IconAlertCircle,
 } from "@tabler/icons-react";
+import DateTimePicker from "./DateTimePicker";
 
 /** Response shape from POST /api/shorten */
 interface ShortenResponse {
@@ -202,12 +203,11 @@ export default function ShortenerForm() {
                     <IconClock className="w-3.5 h-3.5" stroke={1.5} />
                     Expiry date
                   </label>
-                  <input
-                    type="datetime-local"
+                  <DateTimePicker
                     value={expiresAt}
-                    onChange={(e) => setExpiresAt(e.target.value)}
+                    onChange={setExpiresAt}
                     min={minDate}
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-neutral-50 border border-neutral-200 text-neutral-900 focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:border-transparent transition-all font-interTight text-xs"
+                    placeholder="Select expiry date & time"
                   />
                 </div>
 
