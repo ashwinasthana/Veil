@@ -10,7 +10,6 @@ import {
   IconChevronLeft,
   IconChevronRight,
   IconCalendar,
-  IconX,
 } from "@tabler/icons-react";
 
 interface DateTimePickerProps {
