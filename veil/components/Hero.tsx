@@ -31,10 +31,10 @@ const fadeUp = {
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen md:min-h-[85vh] flex items-center justify-center overflow-hidden bg-dots pt-24 pb-16 md:pt-0 md:pb-0">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-dots pt-20 pb-12 sm:pt-16 sm:pb-16 md:pt-0 md:pb-0 md:min-h-[85vh]">
       {/* Subtle monochrome orbs */}
-      <div className="absolute top-20 left-1/4 w-64 md:w-96 h-64 md:h-96 bg-neutral-100 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-1/4 w-64 md:w-96 h-64 md:h-96 bg-neutral-50 rounded-full blur-3xl" />
+      <div className="absolute top-20 left-1/4 w-48 sm:w-64 md:w-96 h-48 sm:h-64 md:h-96 bg-neutral-100 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-1/4 w-48 sm:w-64 md:w-96 h-48 sm:h-64 md:h-96 bg-neutral-50 rounded-full blur-3xl" />
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
         {/* Floating privacy badges */}
@@ -111,43 +111,43 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Dark product preview mock - hidden on mobile */}
+        {/* Dark product preview mock */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           animate="visible"
           custom={0.8}
-          className="hidden sm:block mt-12 sm:mt-16 md:mt-24 relative"
+          className="mt-8 sm:mt-12 md:mt-20 relative"
         >
-          <div className="bg-gray-950 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-2xl border border-gray-800 max-w-3xl mx-auto">
+          <div className="bg-gray-950 rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-6 shadow-2xl border border-gray-800 max-w-xs sm:max-w-xl md:max-w-2xl mx-auto">
             {/* Window controls */}
-            <div className="flex items-center gap-2 mb-4 sm:mb-6">
-              <div className="w-3 h-3 rounded-full bg-red-500/80" />
-              <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-              <div className="w-3 h-3 rounded-full bg-green-500/80" />
-              <span className="ml-4 text-gray-500 text-sm font-mono">veils.dev/dashboard</span>
+            <div className="flex items-center gap-1.5 sm:gap-2 mb-3 sm:mb-4">
+              <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-red-500/80" />
+              <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-yellow-500/80" />
+              <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-green-500/80" />
+              <span className="ml-2 sm:ml-3 text-gray-500 text-[10px] sm:text-xs font-mono">veils.dev/dashboard</span>
             </div>
 
             {/* Mock shortener UI */}
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="flex-1 bg-gray-800/50 rounded-lg sm:rounded-xl px-3 sm:px-5 py-2.5 sm:py-3.5 text-gray-400 text-xs sm:text-sm font-mono border border-gray-700/50 truncate">
-                  https://example.com/very-long-url-that-needs-shortening
+            <div className="space-y-2 sm:space-y-3">
+              <div className="flex items-center gap-2">
+                <div className="flex-1 bg-gray-800/50 rounded-md sm:rounded-lg px-2 sm:px-4 py-2 sm:py-2.5 text-gray-400 text-[10px] sm:text-xs font-mono border border-gray-700/50 truncate">
+                  https://example.com/long-url...
                 </div>
-                <div className="px-4 sm:px-6 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl bg-neutral-900 text-white text-xs sm:text-sm font-medium shadow-lg whitespace-nowrap">
+                <div className="px-3 sm:px-4 py-2 sm:py-2.5 rounded-md sm:rounded-lg bg-white/10 text-white text-[10px] sm:text-xs font-medium">
                   Shorten
                 </div>
               </div>
-              <div className="flex items-center gap-2 sm:gap-3 bg-gray-800/30 rounded-lg sm:rounded-xl px-3 sm:px-5 py-2.5 sm:py-3.5 border border-gray-700/30">
-                <span className="text-emerald-400 text-sm font-mono">✓</span>
-                <span className="text-gray-300 text-xs sm:text-sm font-mono">veils.dev/x7Kp2mQ</span>
-                <span className="ml-auto text-gray-500 text-xs">Copied!</span>
+              <div className="flex items-center gap-2 bg-gray-800/30 rounded-md sm:rounded-lg px-2 sm:px-4 py-2 sm:py-2.5 border border-gray-700/30">
+                <span className="text-emerald-400 text-[10px] sm:text-xs font-mono">✓</span>
+                <span className="text-gray-300 text-[10px] sm:text-xs font-mono">veils.dev/x7Kp2mQ</span>
+                <span className="ml-auto text-gray-500 text-[9px] sm:text-[10px]">Copied!</span>
               </div>
             </div>
           </div>
 
           {/* Subtle shadow under the preview */}
-          <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-2/3 h-20 bg-neutral-900/5 blur-3xl rounded-full" />
+          <div className="absolute -bottom-6 sm:-bottom-10 left-1/2 -translate-x-1/2 w-2/3 h-12 sm:h-16 bg-neutral-900/5 blur-2xl sm:blur-3xl rounded-full" />
         </motion.div>
       </div>
     </section>
