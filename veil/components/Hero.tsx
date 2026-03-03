@@ -31,10 +31,10 @@ const fadeUp = {
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[90vh] md:min-h-[85vh] flex items-center justify-center overflow-hidden bg-dots pt-20 md:pt-0">
+    <section className="relative min-h-screen md:min-h-[85vh] flex items-center justify-center overflow-hidden bg-dots pt-24 pb-16 md:pt-0 md:pb-0">
       {/* Subtle monochrome orbs */}
-      <div className="absolute top-20 left-1/4 w-96 h-96 bg-neutral-100 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-neutral-50 rounded-full blur-3xl" />
+      <div className="absolute top-20 left-1/4 w-64 md:w-96 h-64 md:h-96 bg-neutral-100 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-1/4 w-64 md:w-96 h-64 md:h-96 bg-neutral-50 rounded-full blur-3xl" />
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
         {/* Floating privacy badges */}
@@ -61,7 +61,7 @@ export default function Hero() {
             className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white shadow-md border border-neutral-100 mb-6"
           >
             <Image src="/veil.png" alt="Veil" width={14} height={14} className="rounded-sm" />
-            <span className="font-interTight text-xs font-medium text-neutral-600">Veil — Privacy-first URL shortener</span>
+            <span className="font-interTight text-[10px] sm:text-xs font-medium text-neutral-600">Veil — Privacy-first URL shortener</span>
           </motion.div>
 
           {/* Main headline */}
@@ -70,7 +70,7 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
             custom={0.2}
-            className="font-satoshi text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight mb-4 text-neutral-900"
+            className="font-satoshi text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight mb-3 sm:mb-4 text-neutral-900"
             style={{ letterSpacing: "-0.02em", lineHeight: "1.1" }}
           >
             Shorten links. <span className="text-neutral-400">Stay invisible.</span>
@@ -82,7 +82,7 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
             custom={0.4}
-            className="font-interTight text-base text-neutral-500 max-w-lg mx-auto mb-8 leading-relaxed"
+            className="font-interTight text-sm sm:text-base text-neutral-500 max-w-xs sm:max-w-lg mx-auto mb-6 sm:mb-8 leading-relaxed"
           >
             Anonymous URL shortener. No sign-ups, no tracking, no logs.
           </motion.p>
@@ -93,31 +93,31 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
             custom={0.6}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
           >
             <Link
               href="/dashboard"
-              className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-neutral-900 text-white font-interTight font-medium text-sm tracking-tight shadow-lg shadow-neutral-900/20 hover:shadow-xl hover:bg-neutral-800 transition-all duration-300"
+              className="group inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-neutral-900 text-white font-interTight font-medium text-sm tracking-tight shadow-lg shadow-neutral-900/20 hover:shadow-xl hover:bg-neutral-800 transition-all duration-300"
             >
               Shorten a link
               <IconArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" stroke={1.5} />
             </Link>
             <a
               href="#features"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-neutral-600 font-interTight font-medium text-sm border border-neutral-200 hover:border-neutral-300 hover:shadow-md transition-all duration-300"
+              className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-white text-neutral-600 font-interTight font-medium text-sm border border-neutral-200 hover:border-neutral-300 hover:shadow-md transition-all duration-300"
             >
               Learn more
             </a>
           </motion.div>
         </div>
 
-        {/* Dark product preview mock */}
+        {/* Dark product preview mock - hidden on mobile */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           animate="visible"
           custom={0.8}
-          className="mt-12 sm:mt-16 md:mt-24 relative"
+          className="hidden sm:block mt-12 sm:mt-16 md:mt-24 relative"
         >
           <div className="bg-gray-950 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-2xl border border-gray-800 max-w-3xl mx-auto">
             {/* Window controls */}
