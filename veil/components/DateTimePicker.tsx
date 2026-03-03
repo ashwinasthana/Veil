@@ -29,7 +29,7 @@ export default function DateTimePicker({ value, onChange, min, placeholder = "Se
   const [selectedDate, setSelectedDate] = useState<Date | null>(value ? new Date(value) : null);
   const [hour, setHour] = useState(() => selectedDate ? selectedDate.getHours() : 12);
   const [minute, setMinute] = useState(() => selectedDate ? selectedDate.getMinutes() : 0);
-  const [dropdownPosition, setDropdownPosition] = useState({ top: 0, left: 0, width: 0 });
+  const [dropdownPosition, setDropdownPosition] = useState({ top: 0, left: 0, width: 0, openUpward: false });
   const containerRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
 
@@ -44,10 +44,18 @@ export default function DateTimePicker({ value, onChange, min, placeholder = "Se
   useEffect(() => {
     if (isOpen && containerRef.current) {
       const rect = containerRef.current.getBoundingClientRect();
+      const dropdownHeight = 420; // Approximate height of dropdown
+      const spaceBelow = window.innerHeight - rect.bottom;
+      const spaceAbove = rect.top;
+      const openUpward = spaceBelow < dropdownHeight && spaceAbove > spaceBelow;
+      
       setDropdownPosition({
-        top: rect.bottom + window.scrollY + 8,
+        top: openUpward 
+          ? rect.top + window.scrollY - dropdownHeight - 8 
+          : rect.bottom + window.scrollY + 8,
         left: rect.left + window.scrollX,
-        width: Math.max(rect.width, 288),
+        width: Math.max(rect.width, 280),
+        openUpward,
       });
     }
   }, [isOpen]);
@@ -170,7 +178,7 @@ export default function DateTimePicker({ value, onChange, min, placeholder = "Se
 
   const dropdown = isOpen && mounted ? createPortal(
     <div
-      className="datetime-dropdown fixed z-[9999] bg-white rounded-xl border border-neutral-200 shadow-2xl p-4"
+      className="datetime-dropdown fixed z-[9999] bg-white rounded-xl border border-neutral-200 shadow-2xl p-3"
       style={{
         top: dropdownPosition.top,
         left: dropdownPosition.left,
@@ -179,45 +187,45 @@ export default function DateTimePicker({ value, onChange, min, placeholder = "Se
       }}
     >
       {/* Month navigation */}
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center justify-between mb-3">
         <button
           type="button"
           onClick={goToPrevMonth}
-          className="p-2 rounded-lg hover:bg-neutral-100 transition-colors"
+          className="p-1.5 rounded-lg hover:bg-neutral-100 transition-colors"
         >
           <IconChevronLeft className="w-4 h-4 text-neutral-600" stroke={2} />
         </button>
-        <span className="font-satoshi text-sm font-semibold text-neutral-900">
+        <span className="font-satoshi text-xs font-semibold text-neutral-900">
           {MONTHS[viewDate.getMonth()]} {viewDate.getFullYear()}
         </span>
         <button
           type="button"
           onClick={goToNextMonth}
-          className="p-2 rounded-lg hover:bg-neutral-100 transition-colors"
+          className="p-1.5 rounded-lg hover:bg-neutral-100 transition-colors"
         >
           <IconChevronRight className="w-4 h-4 text-neutral-600" stroke={2} />
         </button>
       </div>
 
       {/* Day headers */}
-      <div className="grid grid-cols-7 gap-1 mb-2">
+      <div className="grid grid-cols-7 gap-0.5 mb-1">
         {DAYS.map((day) => (
-          <div key={day} className="text-center font-interTight text-[10px] text-neutral-400 font-semibold py-1 uppercase">
+          <div key={day} className="text-center font-interTight text-[9px] text-neutral-400 font-semibold py-0.5 uppercase">
             {day}
           </div>
         ))}
       </div>
 
       {/* Calendar grid */}
-      <div className="grid grid-cols-7 gap-1 mb-4">
+      <div className="grid grid-cols-7 gap-0.5 mb-3">
         {days.map((day, i) => (
-          <div key={i} className="aspect-square flex items-center justify-center">
+          <div key={i} className="flex items-center justify-center h-7">
             {day !== null && (
               <button
                 type="button"
                 onClick={() => handleSelectDay(day)}
                 disabled={isDayDisabled(day)}
-                className={`w-8 h-8 rounded-lg font-interTight text-xs font-medium transition-all flex items-center justify-center ${
+                className={`w-7 h-7 rounded-md font-interTight text-[11px] font-medium transition-all flex items-center justify-center ${
                   isDaySelected(day)
                     ? "bg-neutral-900 text-white"
                     : isToday(day)
@@ -235,13 +243,13 @@ export default function DateTimePicker({ value, onChange, min, placeholder = "Se
       </div>
 
       {/* Time picker */}
-      <div className="border-t border-neutral-100 pt-4 mb-4">
-        <p className="text-[10px] text-neutral-400 font-interTight font-medium mb-2 text-center uppercase tracking-wide">Time</p>
-        <div className="flex items-center justify-center gap-2">
+      <div className="border-t border-neutral-100 pt-3 mb-3">
+        <div className="flex items-center justify-center gap-1.5">
+          <span className="text-[10px] text-neutral-400 font-interTight font-medium mr-2">Time:</span>
           <select
             value={hour}
             onChange={(e) => setHour(parseInt(e.target.value))}
-            className="px-3 py-2 rounded-lg bg-neutral-50 border border-neutral-200 font-interTight text-sm text-neutral-900 focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:border-transparent appearance-none cursor-pointer"
+            className="px-2 py-1.5 rounded-md bg-neutral-50 border border-neutral-200 font-interTight text-xs text-neutral-900 focus:outline-none focus:ring-1 focus:ring-neutral-900"
           >
             {Array.from({ length: 24 }, (_, i) => (
               <option key={i} value={i}>
@@ -249,11 +257,11 @@ export default function DateTimePicker({ value, onChange, min, placeholder = "Se
               </option>
             ))}
           </select>
-          <span className="font-satoshi text-neutral-900 font-bold text-lg">:</span>
+          <span className="font-satoshi text-neutral-900 font-bold">:</span>
           <select
             value={minute}
             onChange={(e) => setMinute(parseInt(e.target.value))}
-            className="px-3 py-2 rounded-lg bg-neutral-50 border border-neutral-200 font-interTight text-sm text-neutral-900 focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:border-transparent appearance-none cursor-pointer"
+            className="px-2 py-1.5 rounded-md bg-neutral-50 border border-neutral-200 font-interTight text-xs text-neutral-900 focus:outline-none focus:ring-1 focus:ring-neutral-900"
           >
             {Array.from({ length: 60 }, (_, i) => (
               <option key={i} value={i}>
@@ -269,7 +277,7 @@ export default function DateTimePicker({ value, onChange, min, placeholder = "Se
         <button
           type="button"
           onClick={handleClear}
-          className="flex-1 py-2.5 rounded-lg border border-neutral-200 font-interTight text-xs font-medium text-neutral-600 hover:bg-neutral-50 transition-colors"
+          className="flex-1 py-2 rounded-lg border border-neutral-200 font-interTight text-[11px] font-medium text-neutral-600 hover:bg-neutral-50 transition-colors"
         >
           Clear
         </button>
@@ -277,7 +285,7 @@ export default function DateTimePicker({ value, onChange, min, placeholder = "Se
           type="button"
           onClick={handleApply}
           disabled={!selectedDate}
-          className="flex-1 py-2.5 rounded-lg bg-neutral-900 text-white font-interTight text-xs font-medium hover:bg-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="flex-1 py-2 rounded-lg bg-neutral-900 text-white font-interTight text-[11px] font-medium hover:bg-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
           Apply
         </button>
